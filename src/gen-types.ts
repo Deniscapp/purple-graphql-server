@@ -198,7 +198,7 @@ export type ConversionStats = {
 export type Query = {
   __typename?: 'Query';
   currentStats: ConversionStats;
-  conversions: Array<Conversion>;
+  conversions: Array<Maybe<Conversion>>;
   currencies?: Maybe<Array<Maybe<CurrencyType>>>;
 };
 
@@ -209,7 +209,6 @@ export type Conversion = {
   originCurrency: CurrencyType;
   targetCurrency: CurrencyType;
   result: Scalars['Float'];
-  createdAt: Scalars['String'];
 };
 
 export type NewConversionInput = {
@@ -342,7 +341,7 @@ export type ConversionStatsResolvers<ContextType = IContext, ParentType extends 
 
 export type QueryResolvers<ContextType = IContext, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   currentStats?: Resolver<ResolversTypes['ConversionStats'], ParentType, ContextType>;
-  conversions?: Resolver<Array<ResolversTypes['Conversion']>, ParentType, ContextType>;
+  conversions?: Resolver<Array<Maybe<ResolversTypes['Conversion']>>, ParentType, ContextType>;
   currencies?: Resolver<Maybe<Array<Maybe<ResolversTypes['CurrencyType']>>>, ParentType, ContextType>;
 };
 
@@ -352,7 +351,6 @@ export type ConversionResolvers<ContextType = IContext, ParentType extends Resol
   originCurrency?: Resolver<ResolversTypes['CurrencyType'], ParentType, ContextType>;
   targetCurrency?: Resolver<ResolversTypes['CurrencyType'], ParentType, ContextType>;
   result?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
-  createdAt?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType>;
 };
 

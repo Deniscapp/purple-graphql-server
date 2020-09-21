@@ -193,7 +193,6 @@ const typeDefs = gql`
         originCurrency: CurrencyType!
         targetCurrency: CurrencyType!
         result: Float!
-        createdAt: String!
     }
 
     input NewConversionInput {

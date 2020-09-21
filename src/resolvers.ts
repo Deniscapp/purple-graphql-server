@@ -70,7 +70,7 @@ const resolvers: IResolvers = {
         async conversions(_, __, { ConversionModel }) {
             let allConversions;
             try {
-                allConversions = await ConversionModel.find({}).sort({ createdAt: -1 }).exec();
+                allConversions = await ConversionModel.find({}).exec();
             } catch (err) {
                 throw err;
             }
@@ -122,14 +122,13 @@ const resolvers: IResolvers = {
                 const resultInUSD = rate?.data[`${input.originCurrency}_USD`] * input.value;
                 const newConversion = new ConversionModel({ ...input, resultInUSD, result });
 
-                const { _id, createdAt } = await newConversion.save();
+                const { _id } = await newConversion.save();
 
                 return {
                     ...input,
                     result,
                     resultInUSD,
                     _id,
-                    createdAt,
                 };
             }
 
