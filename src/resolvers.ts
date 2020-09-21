@@ -75,17 +75,14 @@ const resolvers: IResolvers = {
                 throw err;
             }
 
-            return allConversions.map(
-                ({ _id, createdAt, value, originCurrency, targetCurrency, resultInUSD, result }) => ({
-                    _id,
-                    createdAt,
-                    value,
-                    originCurrency,
-                    targetCurrency,
-                    resultInUSD,
-                    result,
-                }),
-            );
+            return allConversions.map(({ _id, value, originCurrency, targetCurrency, resultInUSD, result }) => ({
+                _id,
+                value,
+                originCurrency,
+                targetCurrency,
+                resultInUSD,
+                result,
+            }));
         },
         currencies() {
             return currencies;

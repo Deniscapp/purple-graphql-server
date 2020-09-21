@@ -25,7 +25,7 @@ db.once('open', () => {
         context: { db, ConversionModel } as IContext,
     });
 
-    server.listen().then(({ url }) => {
+    server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
         console.log(`Server running at ${url}`);
     });
 });
