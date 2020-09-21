@@ -1,10 +1,29 @@
 schema: ./src/schema.ts
-
 generates:
   src/gen-types.ts:
     config: 
       defaultMapper: any
       contextType: ./server#IContext
-    plugins: 
+    plugins:
+      - add:
+          content: '/**
+                    * GENERATED FILE. DO NOT MODIFY HERE!.
+                    */
+
+                    /* eslint-disable */'
       - typescript
       - typescript-resolvers
+  ../purple-task-fe/src/gen-types.tsx:
+    documents: '../purple-task-fe/src/queries/*.ts'
+    plugins:
+      - add:
+          content: '/**
+                    * GENERATED FILE. DO NOT MODIFY HERE!.
+                    */
+
+                    /* eslint-disable */'
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      withHooks: true
