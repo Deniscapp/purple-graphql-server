@@ -6,7 +6,7 @@
   "scripts": {
     "start": "tsc && node dist/server.js",
     "generate-schema": "graphql-codegen",
-    "lint": "eslint './src/**/*.ts' --quiet --fix --ignore-pattern: 'gen-types.ts'"
+    "lint": "eslint './src/**/*.ts' --quiet --fix"
   },
   "author": "",
   "license": "ISC",
