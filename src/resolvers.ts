@@ -91,6 +91,9 @@ const resolvers: IResolvers = {
     Mutation: {
         async newConversion(_, { input }, { ConversionModel }) {
             if (typeof input.value === 'number') {
+                if (input.value < 0) {
+                    return new UserInputError('Negative numbers are not valid!');
+                }
                 let rate;
                 const apiUrl = (chosenCurrencies: string) =>
                     `https://free.currconv.com/api/v7/convert?q=${chosenCurrencies}&compact=ultra&apiKey=${apiKey}`;
